@@ -1,7 +1,7 @@
 module Api
   module V1
     class RecordsController < ApplicationController
-      before_action: authorized_refresh_by_access_request!
+      before_action :authorize_access_request!
       before_action :set_record, only: [:show, :update, :destroy]
 
       # GET /records
@@ -21,7 +21,7 @@ module Api
         @record = current_user.records.build(record_params)
 
         if @record.save
-          render json: @record, status: :created, location: @record
+          render json: @record, status: :created
         else
           render json: @record.errors, status: :unprocessable_entity
         end
@@ -47,9 +47,9 @@ module Api
           @record = current_user.records.find(params[:id])
         end
 
-        # Only allow a list of trusted parameters through.
+        # Only allow a trusted parameter "white list" through.
         def record_params
-          params.require(:record).permit(:title, :year, :artist_id, :artist_id)
+          params.require(:record).permit(:title, :year, :artist_id)
         end
     end
   end
