@@ -8,6 +8,7 @@ import {
   securedAxiosInstance,
   plainAxiosInstance
 } from './backend/axios'
+import './main.css'
 
 Vue.config.productionTip = false
 

@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-md m-auto py-10">
-    <div class="text-red" v-if="error">{{ error }}</div>
+    <div class="text-red-600" v-if="error">{{ error }}</div>
     <h3 class="font-mono font-regular text-3xl mb-4">Add a new record</h3>
 
     <form @submit.prevent="addRecord">
@@ -37,7 +37,7 @@
         <p class="pt-4">Don't see an artist? <router-link to="/artists" class="link-grey">Create one</router-link></p>
       </div>
 
-      <input type="submit" value="Add Record" class="font-sans font-bold px-4 rounded cursor-pointer no-underline bg-green hover:bg-green-dark block w-full py-4 text-white items-center justify-center">
+      <input type="submit" value="Add Record" class="font-sans font-bold px-4 rounded cursor-pointer no-underline bg-green-600 hover:bg-green-900 block w-full py-4 text-white items-center justify-center">
     </form>
 
     <hr class="border border-grey-light my-6" />
@@ -53,10 +53,10 @@
           <p class="block font-mono font-semibold">{{ getArtist(record) }}</p>
         </div>
 
-        <button class="bg-transparent text-sm hover:bg-blue hover:text-white text-blue border border-blue no-underline font-bold py-2 px-4 mr-2 rounded"
+        <button class="bg-transparent text-sm hover:bg-blue-600 hover:text-white text-blue-600 border border-blue-600 no-underline font-bold py-2 px-4 mr-2 rounded"
           @click.prevent="editRecord(record)">Edit</button>
 
-        <button class="bg-transparent text-sm hover:bg-red text-red hover:text-white no-underline font-bold py-2 px-4 rounded border border-red"
+        <button class="bg-transparent text-sm hover:bg-red-600 text-red-600 hover:text-white no-underline font-bold py-2 px-4 rounded border border-red-600"
          @click.prevent="removeRecord(record)">Delete</button>
         </div>
 
@@ -75,13 +75,13 @@
               </div>
 
               <div class="mb-6">
-                 <select id="artist_update" class="select" v-model="record.artist">
+                 <select id="artist_update" class="select" v-model="record.artist_id">
                     <option disabled value="">Select an artist</option>
                   <option :value="artist.id" v-for="artist in artists" :key="artist.id">{{ artist.name }}</option>
                   </select>
               </div>
 
-              <input type="submit" value="Update" class="bg-transparent text-sm hover:bg-blue hover:text-white text-blue border border-blue no-underline font-bold py-2 px-4 mr-2 rounded">
+              <input type="submit" value="Update" class="bg-transparent text-sm hover:bg-blue-600 hover:text-white text-blue-600 border border-blue-600 no-underline font-bold py-2 px-4 mr-2 rounded">
             </div>
           </form>
         </div>
